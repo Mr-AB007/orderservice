@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "PAYMENT-SERVICE", url = "http://localhost:8083/payment")
+@FeignClient(name = "PAYMENT-SERVICE")
 public interface PaymentApiClient {
 
-    @PostMapping
+    @PostMapping("/payment")
     ResponseEntity<Long> doPayment(@RequestBody PaymentRequest paymentRequest);
-    @GetMapping("/order/{orderId}")
+    @GetMapping("/payment/order/{orderId}")
     ResponseEntity<PaymentResponse> getPaymentDetailsByOrderId(@PathVariable Long orderId);
 }
